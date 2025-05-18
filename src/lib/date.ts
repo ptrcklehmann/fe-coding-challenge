@@ -4,7 +4,15 @@ type FormattedDate = {
 };
 
 export const getFormattedDate = (date: string | null): FormattedDate => {
-  const daysOfWeek = ["Son", "Mon", "Di", "Mi", "Do", "Fr", "Sa"];
+  const daysOfWeek = [
+    "Sontag",
+    "Montag",
+    "Dienstag",
+    "Mitwoch",
+    "Donnerstag",
+    "Freitag",
+    "Samstag",
+  ];
 
   if (!date) {
     return {

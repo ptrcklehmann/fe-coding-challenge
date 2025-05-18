@@ -1,20 +1,24 @@
 import { Location } from "../app/types/location";
 
+type LatitudeLongitude = {
+  latitude: number;
+  longitude: number;
+};
+
 export const getLatLon = (
   coordinates: Location["coordinates"]
-): { lat: number; lon: number } | null => {
+): LatitudeLongitude | null => {
   if (!coordinates) return null;
-  if (
-    typeof coordinates.latitude === "number" &&
-    typeof coordinates.longitude === "number"
-  ) {
-    return { lat: coordinates.latitude, lon: coordinates.longitude };
+
+  const { latitude, longitude, lat, lon } = coordinates;
+
+  if (typeof latitude === "number" && typeof longitude === "number") {
+    return { latitude, longitude };
   }
-  if (
-    typeof coordinates.lat === "number" &&
-    typeof coordinates.lon === "number"
-  ) {
-    return { lat: coordinates.lat, lon: coordinates.lon };
+
+  if (typeof lat === "number" && typeof lon === "number") {
+    return { latitude: lat, longitude: lon };
   }
+
   return null;
 };
