@@ -2,12 +2,12 @@
 import React from "react";
 import NextLink from "next/link";
 import { LocationSelector } from "@/components/locationSelector";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import { getLocationName } from "@/lib/location";
 
 const ForecastPage: React.FC = () => {
-  const searchParams = useSearchParams();
-  const selectedLocation = searchParams.get("location") || "DE0001020"; // Default to Berlin
+  const params = useParams<{ location: string | undefined }>();
+  const selectedLocation = params.location || "DE0001020"; // Default to Berlin
   const locationName = getLocationName(selectedLocation);
   return (
     <>
