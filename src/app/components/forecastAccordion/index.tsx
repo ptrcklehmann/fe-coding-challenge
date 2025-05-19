@@ -16,7 +16,7 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
   const items = forecast.items.slice(0, numberOfDays);
 
   return (
-    <section>
+    <section className={styles.accordion}>
       {items.map((item, idx) => (
         <details key={item.summary.date} className={styles.accordion_item}>
           <summary key={item.summary.date} className={styles.accordion_header}>
