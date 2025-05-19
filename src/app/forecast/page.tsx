@@ -14,7 +14,6 @@ const ForecastPage: React.FC = () => {
         </NextLink>
         <NextLink href={`/forecast/7-days/DE0001020`}>7 Days</NextLink>
       </nav>
-      <NextLink href="/">go to Home Page</NextLink>
     </>
   );
 };

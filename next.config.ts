@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**.cs3.wettercomassets.com",
       },
+      {
+        protocol: "https",
+        hostname: "cs3.wettercomassets.com",
+      },
     ],
   },
 };
