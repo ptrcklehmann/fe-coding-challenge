@@ -5,13 +5,13 @@ import { LocationSelector } from "@/components/locationSelector";
 import { useSearchParams } from "next/navigation";
 import { getLocationName } from "@/lib/location";
 
-const ForecastPage: React.FC = () => {
+const ForecastContent = () => {
   const params = useSearchParams();
   const selectedLocation = params.get("location") || "DE0001020"; // Default to Berlin
   const locationName = getLocationName(selectedLocation);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
       <LocationSelector />
       <h1>Weather Forecast for {locationName}</h1>
       <nav style={{ marginBottom: 16 }}>
@@ -25,6 +25,14 @@ const ForecastPage: React.FC = () => {
           7 Days
         </NextLink>
       </nav>
+    </>
+  );
+};
+
+const ForecastPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ForecastContent />
     </Suspense>
   );
 };
