@@ -1,6 +1,6 @@
 "use client";
 import { LOCATIONS } from "@/lib/constants";
-import { ChangeEvent, Suspense } from "react";
+import { ChangeEvent, Suspense, useCallback } from "react";
 import styles from "./selector.module.css";
 import { ChevronDownIcon } from "../ui/icons/chevronDown";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
@@ -11,17 +11,20 @@ export const LocationSelector = () => {
   const pathname = usePathname();
   const selectedLocation = searchParams.get("location") || LOCATIONS[0].code;
 
-  const handleLocationChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const params = new URLSearchParams(searchParams);
-    if (event.target.value === LOCATIONS[0].code) {
-      // if Berlin, remove parameter
-      params.delete("location");
-    } else {
-      params.set("location", event.target.value);
-    }
-    const queryString = params.toString();
-    router.push(queryString ? `?${queryString}` : pathname);
-  };
+  const handleLocationChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const params = new URLSearchParams(searchParams);
+      if (event.target.value === LOCATIONS[0].code) {
+        // if Berlin, remove parameter
+        params.delete("location");
+      } else {
+        params.set("location", event.target.value);
+      }
+      const queryString = params.toString();
+      router.push(queryString ? `?${queryString}` : pathname);
+    },
+    [searchParams, router, pathname]
+  );
 
   return (
     <div className={styles.select_box}>
