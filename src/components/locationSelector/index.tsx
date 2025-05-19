@@ -1,6 +1,6 @@
 "use client";
 import { LOCATIONS } from "@/lib/constants";
-import { ChangeEvent, Suspense } from "react";
+import { ChangeEvent } from "react";
 import styles from "./selector.module.css";
 import { ChevronDownIcon } from "../ui/icons/chevronDown";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
@@ -23,7 +23,7 @@ export const LocationSelector = () => {
   };
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
       <div className={styles.select_box}>
         <div className={styles.select_box_current} tabIndex={0}>
           {LOCATIONS.map(({ code, name }) => (
@@ -63,6 +63,6 @@ export const LocationSelector = () => {
           ))}
         </ul>
       </div>
-    </Suspense>
+    </>
   );
 };
