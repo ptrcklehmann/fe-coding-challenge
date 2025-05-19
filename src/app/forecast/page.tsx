@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import NextLink from "next/link";
 import { LocationSelector } from "@/components/locationSelector";
 import { useParams } from "next/navigation";
@@ -10,7 +10,7 @@ const ForecastPage: React.FC = () => {
   const selectedLocation = params.location || "DE0001020"; // Default to Berlin
   const locationName = getLocationName(selectedLocation);
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <LocationSelector />
       <h1>Weather Forecast for {locationName}</h1>
       <nav style={{ marginBottom: 16 }}>
@@ -24,7 +24,7 @@ const ForecastPage: React.FC = () => {
           7 Days
         </NextLink>
       </nav>
-    </>
+    </Suspense>
   );
 };
 
