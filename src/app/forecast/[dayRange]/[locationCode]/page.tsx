@@ -39,6 +39,9 @@ export default async function ForecastByDayRange({ params }: Params) {
   const { forecast } = result;
 
   return (
-    <DailyForecastAccordion forecast={forecast} days={parseInt(dayRange)} />
+    <DailyForecastAccordion
+      forecast={forecast}
+      numberOfDays={parseInt(dayRange)}
+    />
   );
 }

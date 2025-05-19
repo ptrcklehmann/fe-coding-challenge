@@ -6,14 +6,14 @@ import styles from "./accordion.module.css";
 
 type DailyForecastAccordionProps = {
   forecast: ForecastWeatherNearby;
-  days: number;
+  numberOfDays: number;
 };
 
 const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
   forecast,
-  days,
+  numberOfDays,
 }) => {
-  const items = forecast.items.slice(0, days);
+  const items = forecast.items.slice(0, numberOfDays);
 
   return (
     <section>
