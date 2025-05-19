@@ -5,7 +5,7 @@
   padding: 0;
 }
 
-.accordionItem {
+.accordion_item {
   margin: 4px 0;
   border-radius: 8px;
   border: 1px solid var(--border);
@@ -28,46 +28,58 @@
   }
 }
 
-.accordionHeader {
+.accordion_header {
   display: grid;
-  grid-template-columns: 100px 1fr auto;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   cursor: pointer;
   width: 100%;
-  padding: 10px 20px;
-  & img {
-    border: 0;
-    max-width: 100%;
-    object-fit: contain;
-    object-position: center;
-    vertical-align: middle;
-  }
+  padding: 10px 40px;
 }
 
-.accordionContent {
+.accordion_content {
   margin: 0;
-  padding: 5px 40px 20px;
+  padding: 5px 40px 20px 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-rows: repeat(4, 45px);
 }
 
-.spaceItem {
-  display: flex;
-  flex-direction: column;
+.space_item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
   list-style: none;
   padding: 0;
+}
+
+.period_type {
+  font-weight: 500;
 }
 
 .conditions {
   font-size: 0.8rem;
   font-weight: 500;
+  justify-self: center;
 }
 
-.weatherIcon {
+.weather_icon {
+  justify-self: center;
   width: 100px;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  vertical-align: middle;
+  text-align: center;
 }
 
-.dateInfo {
+.space_weather_icon {
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  vertical-align: middle;
+}
+
+.date_info {
   display: flex;
   flex-direction: column;
   width: 120px;
@@ -85,21 +97,42 @@
 }
 
 .temperature {
-  line-height: 1;
-  vertical-align: bottom;
+  display: flex;
+  align-items: center;
+  justify-self: flex-end;
+  gap: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: right;
 }
 
-.maxTemp {
-  font-size: 2rem;
-  font-weight: 500;
-}
-.minTemp {
+.space_item_temperature {
+  display: flex;
+  align-items: center;
+  justify-self: flex-end;
+  gap: 1rem;
   font-size: 1rem;
   font-weight: 500;
+  text-align: right;
+}
+
+.max_temp {
+  color: var(--foreground);
+}
+
+.min_temp {
+  color: var(--foreground-muted);
+  width: 40px;
 }
 
 @media (max-width: 600px) {
-  .dateInfo {
+  .accordion_header {
+    padding: 10px 20px;
+  }
+  .accordion_content {
+    padding: 5px 20px 20px 20px;
+  }
+  .date_info {
     width: 100px;
   }
   .weekday {
@@ -107,5 +140,8 @@
   }
   .date {
     font-size: 0.6rem;
+  }
+  .min_temp {
+    width: 30px;
   }
 }

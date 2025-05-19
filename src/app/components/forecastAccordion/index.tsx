@@ -18,20 +18,9 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
   return (
     <section>
       {items.map((item, idx) => (
-        <details key={item.summary.date} className={styles.accordionItem}>
-          <summary key={item.summary.date} className={styles.accordionHeader}>
-            {item.summary.weather.icon && (
-              <div className={styles.weatherIcon}>
-                <Image
-                  src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${item.summary.weather.icon}`}
-                  alt={item.summary.weather.text || "weather icon"}
-                  width={100}
-                  height={90}
-                  priority
-                />
-              </div>
-            )}
-            <div className={styles.dateInfo}>
+        <details key={item.summary.date} className={styles.accordion_item}>
+          <summary key={item.summary.date} className={styles.accordion_header}>
+            <div className={styles.date_info}>
               <span className={styles.date}>
                 {getFormattedDate(item.summary.date).date}
               </span>
@@ -39,41 +28,53 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
                 {getFormattedDate(item.summary.date).dayOfTheWeek}
               </span>
             </div>
+            {item.summary.weather.icon && (
+              <Image
+                src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${item.summary.weather.icon}`}
+                alt={item.summary.weather.text || "weather icon"}
+                width={100}
+                height={90}
+                priority
+                className={styles.weather_icon}
+              />
+            )}
             <div className={styles.temperature}>
-              <span className={styles.maxTemp}>
+              <span className={styles.max_temp}>
                 {item.summary.temperature.max}°
               </span>
-              /
-              <span className={styles.minTemp}>
+              <span className={styles.min_temp}>
                 {item.summary.temperature.min}°
               </span>
             </div>
           </summary>
-          <ul className={styles.accordionContent} id={`details-${idx}`}>
+          <ul className={styles.accordion_content} id={`details-${idx}`}>
             {["morning", "afternoon", "evening", "night"].map((part) => {
               const space = item.spaces.find((s) => s.type === part);
               if (!space) return null;
               return (
-                <li key={space.type || part} className={styles.spaceItem}>
-                  <strong>{space.typeLabel}</strong>
-                  {space.temperature.min}°C / {space.temperature.max}°C
-                  {space.weather.icon && (
-                    <Image
-                      src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${space.weather.icon}`}
-                      alt={space.weather.text || "weather icon"}
-                      width={30}
-                      height={30}
-                      priority
-                      style={{
-                        display: "inline-block",
-                        verticalAlign: "middle",
-                        marginLeft: 8,
-                      }}
-                    />
-                  )}
+                <li key={space.type || part} className={styles.space_item}>
+                  <span className={styles.period_type}>{space.typeLabel}</span>
                   <span className={styles.conditions}>
+                    {space.weather.icon && (
+                      <Image
+                        src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${space.weather.icon}`}
+                        alt={space.weather.text || "weather icon"}
+                        width={40}
+                        height={30}
+                        priority
+                        className={styles.space_weather_icon}
+                      />
+                    )}
                     {space.weather.text}
                   </span>
+                  <div className={styles.space_item_temperature}>
+                    <span className={styles.max_temp}>
+                      {space.temperature.max}°
+                    </span>
+                    <span className={styles.min_temp}>
+                      {space.temperature.min}°
+                    </span>
+                  </div>
                 </li>
               );
             })}

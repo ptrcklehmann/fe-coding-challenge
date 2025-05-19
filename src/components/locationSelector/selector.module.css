@@ -1,0 +1,134 @@
+.select_box {
+  position: relative;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 4px;
+}
+
+@media (min-width: 768px) {
+  .select_box {
+    width: 70%;
+  }
+}
+
+@media (min-width: 992px) {
+  .select_box {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .select_box {
+    width: 30%;
+  }
+}
+
+.select_box_current {
+  position: relative;
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  outline: none;
+}
+
+.select_box_current:focus + .select_box_list {
+  opacity: 1;
+  -webkit-animation-name: none;
+  animation-name: none;
+}
+
+.select_box_current:focus + .select_box_list .select_box_option {
+  cursor: pointer;
+}
+
+.select_box_current:focus .select_box_icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.select_box_icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+  transition: all 0.2s ease;
+
+  svg path {
+    fill: var(--border);
+  }
+}
+
+.select_box_value {
+  display: flex;
+}
+
+.select_box_input {
+  display: none;
+}
+
+.select_box_input:checked + .select_box_input_text {
+  display: block;
+}
+
+.select_box_input_text {
+  display: none;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+}
+
+.select_box_list {
+  border: 1px solid var(--border);
+  background: var(--background);
+  position: absolute;
+  width: 100%;
+  border-radius: 4px;
+  padding: 0;
+  margin: 5px 0;
+  list-style: none;
+  opacity: 0;
+  -webkit-animation-name: HideList;
+  animation-name: HideList;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-timing-function: step-start;
+  animation-timing-function: step-start;
+}
+
+.select_box_item {
+  display: block;
+  padding: 10px;
+}
+
+.select_box_item:hover,
+.select_box_item:focus {
+  color: var(--accent-foreground);
+  background-color: var(--accent);
+}
+
+@-webkit-keyframes HideList {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes HideList {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
