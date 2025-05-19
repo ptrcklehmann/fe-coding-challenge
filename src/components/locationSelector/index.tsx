@@ -24,7 +24,7 @@ export const LocationSelector = () => {
 
   return (
     <div className={styles.select_box}>
-      <div className={styles.select_box_current} tabIndex={1}>
+      <div className={styles.select_box_current} tabIndex={0}>
         {LOCATIONS.map(({ code, name }) => (
           <div key={code} className={styles.select_box_value}>
             <input
@@ -43,14 +43,19 @@ export const LocationSelector = () => {
           <ChevronDownIcon />
         </span>
       </div>
-      <ul className={styles.select_box_list} role="listbox">
+      <ul
+        className={styles.select_box_list}
+        role="listbox"
+        aria-label="Select location"
+      >
         {LOCATIONS.map(({ code, name }) => (
-          <li key={code} role="option">
-            <label
-              className={styles.select_box_item}
-              htmlFor={code}
-              aria-hidden="true"
-            >
+          <li
+            key={code}
+            role="option"
+            aria-selected={selectedLocation === code}
+            aria-label={name}
+          >
+            <label className={styles.select_box_item} htmlFor={code}>
               {name}
             </label>
           </li>
