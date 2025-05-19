@@ -1,6 +1,5 @@
 import DailyForecastAccordion from "@/app/components/forecastAccordion";
-import { fetchForecast, fetchLocation } from "@/lib/api";
-import { getLatLon } from "@/utils/coordinates";
+import { fetchForecastByLocation } from "@/lib/api";
 import { Metadata } from "next";
 
 type Params = {
@@ -13,14 +12,15 @@ type Params = {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { dayRange, locationCode } = await params;
 
-  const location = await fetchLocation(locationCode);
-  if (!location) {
+  const result = await fetchForecastByLocation(locationCode);
+  if (!result) {
     return {
       title: "Location not found.",
       description:
         "Detailed weather forecast for a specific location and day range.",
     };
   }
+  const { location } = result;
 
   return {
     title: `Weather Forecast for ${location.name} (${dayRange})`,
@@ -31,20 +31,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 export default async function ForecastByDayRange({ params }: Params) {
   const { dayRange, locationCode } = await params;
 
-  const location = await fetchLocation(locationCode);
-  if (!location) {
-    return <div>Location not found.</div>;
+  const result = await fetchForecastByLocation(locationCode);
+  if (!result) {
+    return <div>Forecast data not found.</div>;
   }
 
-  const coords = getLatLon(location.coordinates);
-  if (!coords) {
-    return <div>Coordinates not found.</div>;
-  }
-
-  const forecast = await fetchForecast(coords.latitude, coords.longitude);
-  if (!forecast) {
-    return <div>Forecast not found.</div>;
-  }
+  const { forecast } = result;
 
   return (
     <DailyForecastAccordion forecast={forecast} days={parseInt(dayRange)} />
