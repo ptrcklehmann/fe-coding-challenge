@@ -9,6 +9,7 @@
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
+  z-index: 99;
 }
 
 .home_link {
