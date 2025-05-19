@@ -9,6 +9,7 @@ const ForecastPage: React.FC = () => {
   const params = useSearchParams();
   const selectedLocation = params.get("location") || "DE0001020"; // Default to Berlin
   const locationName = getLocationName(selectedLocation);
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <LocationSelector />
