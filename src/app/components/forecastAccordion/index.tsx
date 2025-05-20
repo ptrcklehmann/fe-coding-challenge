@@ -54,7 +54,7 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
               return (
                 <li key={space.type || part} className={styles.space_item}>
                   <span className={styles.period_type}>{space.typeLabel}</span>
-                  <span className={styles.conditions}>
+                  <span className={styles.period_type_conditions}>
                     {space.weather.icon && (
                       <Image
                         src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${space.weather.icon}`}

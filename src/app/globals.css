@@ -1,10 +1,11 @@
 :root {
   --background: #c6dfd9;
-  --background-transparent: rgba(198, 223, 217, 0.6);
+  --background-transparent: rgba(211, 230, 225, 0.5);
+  --background-gradient: linear-gradient(360deg, #c6dfd9 0%, #d3e6e1 100%);
   --foreground: #09090b;
   --foreground-muted: #82828e;
   --border: #b1cfc8;
-  --accent: #e2e2e2e4;
+  --accent: #d3e6e1;
   --accent-foreground: #27272a;
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
@@ -13,10 +14,11 @@
   :root {
     --background: #06001c;
     --background-transparent: rgba(6, 0, 28, 0.6);
+    --background-gradient: linear-gradient(360deg, #06001c 0%, #0e0043 100%);
     --foreground: #ededed;
     --foreground-muted: #c6c6c6;
     --border: #27272a;
-    --accent: #27272a;
+    --accent: #0e0043;
     --accent-foreground: #fafafa;
   }
 }

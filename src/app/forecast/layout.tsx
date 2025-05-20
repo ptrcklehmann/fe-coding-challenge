@@ -6,5 +6,9 @@ export default function ForecastPageLayout({
 }: {
   children: ReactNode;
 }) {
-  return <main className={styles.page}>{children}</main>;
+  return (
+    <div className={styles.page}>
+      <main>{children}</main>
+    </div>
+  );
 }
