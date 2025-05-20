@@ -1,0 +1,8 @@
+.headline {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--foreground);
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--border);
+  margin: 0 0 15px;
+}

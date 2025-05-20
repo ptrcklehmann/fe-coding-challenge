@@ -1,4 +1,5 @@
 import DailyForecastAccordion from "@/app/components/forecastAccordion";
+import { Headline } from "@/components/ui/headline";
 import { fetchForecastByLocation } from "@/lib/api";
 import { Metadata } from "next";
 
@@ -38,9 +39,9 @@ export default async function ThreeDayForecast({ params }: Params) {
   const { forecast } = result;
 
   return (
-    <DailyForecastAccordion
-      forecast={forecast}
-      numberOfDays={3}
-    />
+    <>
+      <Headline>3-day forecast for Berlin</Headline>
+      <DailyForecastAccordion forecast={forecast} numberOfDays={3} />
+    </>
   );
 }

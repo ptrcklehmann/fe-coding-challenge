@@ -12,6 +12,12 @@ export const Navbar = () => {
         <NextLink href="/forecast" className={styles.nav_link}>
           Forecast
         </NextLink>
+        <NextLink href="/forecast/3-days/DE0001020" className={styles.nav_link}>
+          3 Days
+        </NextLink>
+        <NextLink href="/forecast/7-days/DE0001020" className={styles.nav_link}>
+          7 Days
+        </NextLink>
       </nav>
     );
     }

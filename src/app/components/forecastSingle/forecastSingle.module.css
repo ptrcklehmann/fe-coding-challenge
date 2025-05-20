@@ -1,0 +1,82 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  justify-items: start;
+  justify-items: stretch;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: var(--accent);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.date_info {
+  display: flex;
+  flex-direction: column;
+}
+.date {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent-foreground);
+}
+
+.weekday {
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.temperature {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  display: flex;
+  align-items: center;
+  justify-self: flex-end;
+  gap: 0.8rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.max_temp {
+  color: var(--foreground);
+}
+
+.min_temp {
+  color: var(--muted-foreground);
+  width: 40px;
+}
+
+.weather_icon_container {
+  grid-column: span 2 / span 2;
+  grid-row: span 2 / span 2;
+  grid-column-start: 1;
+  grid-row-start: 2;
+  text-align: center;
+}
+
+.weather_icon {
+  width: 40%;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+  .date {
+    font-size: 1rem;
+  }
+  .weekday {
+    font-size: 1.5rem;
+  }
+  .temperature {
+    font-size: 2rem;
+  }
+  .weather_icon {
+    width: 100%;
+  }
+}

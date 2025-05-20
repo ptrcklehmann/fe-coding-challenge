@@ -1,24 +1,27 @@
 :root {
   --background: #c6dfd9;
+  --muted: #d3e6e1;
   --background-transparent: rgba(211, 230, 225, 0.5);
   --background-gradient: linear-gradient(360deg, #c6dfd9 0%, #d3e6e1 100%);
   --foreground: #09090b;
-  --foreground-muted: #82828e;
+  --muted-foreground: #71717a;
   --border: #b1cfc8;
   --accent: #d3e6e1;
   --accent-foreground: #27272a;
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --radius: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #06001c;
-    --background-transparent: rgba(6, 0, 28, 0.6);
+    --background: #090902;
+    --muted: #27272a;
+    --background-transparent: rgba(9, 9, 2, 0.6);
     --background-gradient: linear-gradient(360deg, #06001c 0%, #0e0043 100%);
     --foreground: #ededed;
-    --foreground-muted: #c6c6c6;
+    --muted-foreground: #c6c6c6;
     --border: #27272a;
-    --accent: #0e0043;
+    --accent: #090902;
     --accent-foreground: #fafafa;
   }
 }
@@ -46,7 +49,7 @@ body {
   background: var(--background);
   background-image: url(./../assets/noise-light.png);
   background-attachment: fixed;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

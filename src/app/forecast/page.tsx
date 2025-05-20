@@ -1,40 +1,18 @@
-"use client";
-import React, { Suspense } from "react";
-import NextLink from "next/link";
-import { LocationSelector } from "@/components/locationSelector";
-import { useSearchParams } from "next/navigation";
-import { getLocationName } from "@/lib/location";
+import { Headline } from "@/components/ui/headline";
+import { fetchForecastByLocation } from "@/lib/api";
+import ForecastSingle from "../components/forecastSingle";
 
-const ForecastContent = () => {
-  const params = useSearchParams();
-  const selectedLocation = params.get("location") || "DE0001020"; // Default to Berlin
-  const locationName = getLocationName(selectedLocation);
+export default async function ForecastPage() {
+  const result = await fetchForecastByLocation("DE0001020");
+  if (!result) {
+    return <div>Forecast data not found.</div>;
+  }
 
+  const { forecast } = result;
   return (
     <>
-      <LocationSelector />
-      <h1>Weather Forecast for {locationName}</h1>
-      <nav style={{ marginBottom: 16 }}>
-        <NextLink
-          href={`/forecast/3-days/${selectedLocation}`}
-          style={{ marginRight: 12 }}
-        >
-          3 Days
-        </NextLink>
-        <NextLink href={`/forecast/7-days/${selectedLocation}`}>
-          7 Days
-        </NextLink>
-      </nav>
+      <Headline>Berlin</Headline>
+      <ForecastSingle forecast={forecast} />
     </>
   );
-};
-
-const ForecastPage = () => {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ForecastContent />
-    </Suspense>
-  );
-};
-
-export default ForecastPage;
+}
