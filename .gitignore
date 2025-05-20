@@ -41,8 +41,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#github
-.github/copilot-instructions.md
-
 #vscode
 .vscode/
