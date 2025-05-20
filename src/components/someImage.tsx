@@ -9,7 +9,12 @@ export const SomeImage: React.FC = () => {
         height={333}
         priority
         alt="Harbor scene"
-        style={{ objectFit: "cover", width: "100%", height: "auto" }}
+        style={{
+          objectFit: "cover",
+          width: "100%",
+          height: "auto",
+          aspectRatio: 1.5 / 1,
+        }}
       />
       <div>
         Description:
