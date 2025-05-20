@@ -8,7 +8,7 @@
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   background: var(--accent);
-  padding: 20px;
+  padding: 40px 40px 10px;
   overflow: hidden;
 }
 
@@ -46,7 +46,6 @@
 
 .min_temp {
   color: var(--muted-foreground);
-  width: 40px;
 }
 
 .weather_icon_container {
@@ -59,13 +58,13 @@
 
 .weather_icon {
   width: 40%;
-  max-width: 100%;
+  aspect-ratio: 88 / 75;
   height: auto;
 }
 
 @media (max-width: 600px) {
   .container {
-    padding: 20px;
+    padding: 20px 20px 0;
   }
   .date {
     font-size: 1rem;
@@ -77,6 +76,6 @@
     font-size: 2rem;
   }
   .weather_icon {
-    width: 100%;
+    width: 90%;
   }
 }

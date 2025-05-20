@@ -25,6 +25,9 @@
     opacity: 1;
     block-size: auto;
   }
+  &[open] .accordion_header {
+    border-bottom: 1px solid var(--border);
+  }
 }
 
 .accordion_header {
@@ -34,56 +37,6 @@
   cursor: pointer;
   width: 100%;
   padding: 10px 40px;
-}
-
-.accordion_content {
-  margin: 0;
-  padding: 5px 40px 20px 40px;
-  display: grid;
-  grid-template-rows: repeat(4, 50px);
-  background: var(--background-gradient);
-}
-
-.space_item {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  list-style: none;
-  padding: 0;
-}
-
-.period_type {
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.period_type_conditions {
-  font-size: 0.8rem;
-  font-weight: 500;
-  justify-self: center;
-}
-
-.conditions {
-  font-size: 0.8rem;
-  font-weight: 500;
-  justify-self: center;
-}
-
-.weather_icon {
-  justify-self: center;
-  width: 100px;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: center;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.space_weather_icon {
-  max-width: 100%;
-  object-fit: contain;
-  object-position: center;
-  vertical-align: middle;
 }
 
 .date_info {
@@ -114,16 +67,6 @@
   text-align: right;
 }
 
-.space_item_temperature {
-  display: flex;
-  align-items: center;
-  justify-self: flex-end;
-  gap: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: right;
-}
-
 .max_temp {
   color: var(--foreground);
 }
@@ -133,34 +76,112 @@
   width: 40px;
 }
 
+.weather_icon {
+  justify-self: center;
+  width: 100px;
+  max-width: 100%;
+  aspect-ratio: 88 / 75;
+  object-fit: contain;
+  object-position: center;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.accordion_content {
+  padding: 0;
+  margin: 10px 40px;
+  display: grid;
+  grid-template-rows: repeat(4, 40px);
+  gap: 1px;
+  background: var(--background);
+}
+
+.detailed_forecast {
+  background: var(--accent);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+.period_label {
+  font-weight: 500;
+}
+
+.period_conditions {
+  font-size: 0.8rem;
+  font-weight: 500;
+  justify-self: stretch;
+  text-align: center;
+}
+
+.period_weather_icon {
+  width: 40px;
+  height: auto;
+  aspect-ratio: 88 / 75;
+  object-fit: contain;
+  object-position: center;
+  vertical-align: middle;
+}
+
+.period_temperature {
+  display: flex;
+  align-items: center;
+  justify-self: flex-end;
+  gap: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: right;
+}
+
 @media (max-width: 600px) {
   .accordion_header {
-    padding: 10px 10px;
+    padding: 10px 20px;
   }
+
   .weather_icon {
-    width: 70px;
+    width: 50px;
   }
+
   .accordion_content {
-    padding: 5px 20px 20px 20px;
+    margin: 20px;
+    grid-template-rows: repeat(4, 50px);
   }
+
   .date_info {
     width: 100px;
   }
+
   .weekday {
     font-size: 1rem;
   }
+
   .date {
     font-size: 0.8rem;
   }
+
   .temperature {
     font-size: 1.2rem;
   }
+
   .min_temp {
     width: 30px;
   }
-  .period_type_conditions {
+
+  .period_conditions {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 0.7rem;
+  }
+
+  .period_weather_icon {
+    width: 35px;
+  }
+
+  .period_temperature,
+  .period_label {
+    font-size: 0.8rem;
   }
 }

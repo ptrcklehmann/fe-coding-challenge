@@ -22,12 +22,12 @@ export default function ForecastSingle({
       </div>
       <div className={styles.weather_icon_container}>
         <Image
+          className={styles.weather_icon}
           src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${forecastItem.summary.weather.icon}`}
           alt={forecastItem.summary.weather.text || "weather icon"}
-          width={176}
-          height={150}
+          width={88}
+          height={75}
           priority
-          className={styles.weather_icon}
         />
       </div>
       <div className={styles.temperature}>
