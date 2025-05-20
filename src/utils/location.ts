@@ -1,4 +1,4 @@
-import { LOCATIONS } from "./constants";
+import { LOCATIONS } from "../constants";
 
 export const getLocationName = (locationCode: string): string => {
   const location = LOCATIONS.find((loc) => loc.code === locationCode);

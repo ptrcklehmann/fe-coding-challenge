@@ -1,5 +1,5 @@
 import { ForecastWeatherNearby } from "@/app/types/forecast";
-import { getFormattedDate } from "@/lib/date";
+import { getFormattedDate } from "@/utils/date";
 import Image from "next/image";
 import React from "react";
 import styles from "./accordion.module.css";
