@@ -5,9 +5,12 @@ import NextLink from 'next/link';
 export const Navbar = () => {
     return (
       <nav className={styles.navbar}>
-        <NextLink href="/" className={styles.home_link}>
-          <HomeIcon width={18} height={18} />
+        <NextLink href="/" className={styles.nav_link}>
+          <HomeIcon width={15} height={14} />
           Home
+        </NextLink>
+        <NextLink href="/forecast" className={styles.nav_link}>
+          Forecast
         </NextLink>
       </nav>
     );

@@ -9,20 +9,25 @@
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
+  gap: 1.5rem;
   z-index: 99;
 }
 
-.home_link {
+.nav_link {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   column-gap: 0.2rem;
   text-decoration: none;
   color: var(--foreground);
-  font-family: var(--font-geist-mono);
-  line-height: 1;
+  text-transform: uppercase;
   vertical-align: middle;
-  letter-spacing: 0.01rem;
-  font-weight: 700;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1;
+  & svg {
+    margin-top: -2px;
+  }
 }
 
 @media (max-width: 600px) {
