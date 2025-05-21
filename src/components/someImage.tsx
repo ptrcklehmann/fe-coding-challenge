@@ -7,7 +7,7 @@ export const SomeImage: React.FC = () => {
         src="https://cs3.wettercomassets.com/images/interview/hafen.jpg"
         width={500}
         height={333}
-        priority
+        priority={true}
         alt="Harbor scene"
         style={{
           objectFit: "cover",
@@ -15,6 +15,7 @@ export const SomeImage: React.FC = () => {
           height: "auto",
           aspectRatio: 1.5 / 1,
         }}
+        sizes="(max-width: 600px) 100vw, 80vw"
       />
       <div>
         Description:

@@ -27,7 +27,8 @@ export default function ForecastSingle({
           alt={forecastItem.summary.weather.text || "weather icon"}
           width={88}
           height={75}
-          priority
+          priority={true}
+          sizes="(max-width: 600px) 90vw, 40vw"
         />
       </div>
       <div className={styles.temperature}>

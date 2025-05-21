@@ -39,7 +39,8 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
                 alt={item.summary.weather.text || "weather icon"}
                 width={88}
                 height={75}
-                priority
+                priority={idx === 0}
+                sizes="(max-width: 600px) 50px, 100px"
               />
             )}
             <div className={styles.temperature}>
@@ -69,7 +70,8 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
                         alt={space.weather.text || "weather icon"}
                         width={176}
                         height={150}
-                        priority
+                        loading="lazy"
+                        sizes="(max-width: 600px) 35px, 40px"
                       />
                     )}
                     {space.weather.text}

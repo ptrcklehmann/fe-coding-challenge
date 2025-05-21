@@ -1,7 +1,9 @@
+/* Base accordion structure */
 .accordion {
   padding-bottom: 60px;
 }
 
+/* Accordion item styles */
 .accordion_item {
   margin: 4px 0;
   border-radius: var(--radius);
@@ -9,27 +11,35 @@
   box-shadow: var(--shadow);
   background: var(--accent);
   overflow: hidden;
-  @media (prefers-reduced-motion: no-preference) {
+  will-change: opacity, block-size;
+}
+
+/* Animation preferences */
+@media (prefers-reduced-motion: no-preference) {
+  .accordion_item {
     interpolate-size: allow-keywords;
-  }
-
-  &::details-content {
-    opacity: 0;
-    block-size: 0;
-    overflow-y: clip;
-    transition: content-visibility 0.2s allow-discrete, opacity 0.2s,
-      block-size 0.2s;
-  }
-
-  &[open]::details-content {
-    opacity: 1;
-    block-size: auto;
-  }
-  &[open] .accordion_header {
-    border-bottom: 1px solid var(--border);
   }
 }
 
+/* Accordion animations */
+.accordion_item::details-content {
+  opacity: 0;
+  block-size: 0;
+  overflow-y: clip;
+  transition: content-visibility 0.2s allow-discrete, opacity 0.2s ease,
+    block-size 0.2s ease;
+}
+
+.accordion_item[open]::details-content {
+  opacity: 1;
+  block-size: auto;
+}
+
+.accordion_item[open] .accordion_header {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Header layout */
 .accordion_header {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -39,6 +49,7 @@
   padding: 10px 40px;
 }
 
+/* Date section */
 .date_info {
   display: flex;
   flex-direction: column;
@@ -47,16 +58,19 @@
 
 .weekday {
   font-size: 1.5rem;
-  font-weight: 600;
+  line-height: 1;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
 .date {
   font-size: 1rem;
+  line-height: 1;
   font-weight: 600;
   color: var(--accent-foreground);
 }
 
+/* Temperature section */
 .temperature {
   display: flex;
   align-items: center;
@@ -64,7 +78,7 @@
   gap: 0.7rem;
   font-size: 1.5rem;
   font-weight: 600;
-  text-align: right;
+  text-align: center;
 }
 
 .max_temp {
@@ -73,20 +87,20 @@
 
 .min_temp {
   color: var(--muted-foreground);
-  width: 40px;
+  width: 50px;
 }
 
+/* Weather icon */
 .weather_icon {
   justify-self: center;
   width: 100px;
   max-width: 100%;
-  aspect-ratio: 88 / 75;
+  aspect-ratio: 88/75;
   object-fit: contain;
   object-position: center;
-  vertical-align: middle;
-  text-align: center;
 }
 
+/* Detailed forecast section */
 .accordion_content {
   padding: 0;
   margin: 10px 40px;
@@ -106,11 +120,12 @@
 }
 
 .period_label {
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .period_conditions {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 500;
   justify-self: stretch;
   text-align: center;
@@ -119,7 +134,7 @@
 .period_weather_icon {
   width: 40px;
   height: auto;
-  aspect-ratio: 88 / 75;
+  aspect-ratio: 88/75;
   object-fit: contain;
   object-position: center;
   vertical-align: middle;
@@ -130,11 +145,12 @@
   align-items: center;
   justify-self: flex-end;
   gap: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
 }
 
+/* Mobile responsive styles */
 @media (max-width: 600px) {
   .accordion_header {
     padding: 10px 20px;
