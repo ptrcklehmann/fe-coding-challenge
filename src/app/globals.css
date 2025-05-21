@@ -2,7 +2,6 @@
   --background: #c6dfd9;
   --muted: #d3e6e1;
   --background-transparent: rgba(211, 230, 225, 0.5);
-  --background-gradient: linear-gradient(360deg, #c6dfd9 0%, #d3e6e1 100%);
   --foreground: #09090b;
   --muted-foreground: #5e5e66;
   --border: #b1cfc8;
@@ -17,7 +16,6 @@
     --background: #090902;
     --muted: #27272a;
     --background-transparent: rgba(9, 9, 2, 0.6);
-    --background-gradient: linear-gradient(360deg, #06001c 0%, #0e0043 100%);
     --foreground: #ededed;
     --muted-foreground: #c6c6c6;
     --border: #27272a;
