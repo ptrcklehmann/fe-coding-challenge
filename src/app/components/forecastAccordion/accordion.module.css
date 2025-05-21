@@ -102,12 +102,12 @@
 
 /* Detailed forecast section */
 .accordion_content {
-  padding: 0;
-  margin: 10px 40px;
+  margin: 0;
+  padding: 20px 40px;
   display: grid;
   grid-template-rows: repeat(4, 50px);
   gap: 1px;
-  background: var(--background);
+  background: var(--accent);
 }
 
 .detailed_forecast {
@@ -117,6 +117,10 @@
   align-items: center;
   list-style: none;
   padding: 0;
+}
+
+.detailed_forecast[data-position="middle"] {
+  border-bottom: 1px solid var(--background);
 }
 
 .period_label {
@@ -163,8 +167,8 @@
   }
 
   .accordion_content {
-    margin: 10px 20px 20px;
-    grid-template-rows: repeat(4, 70px);
+    padding: 10px 20px;
+    grid-template-rows: repeat(4, 60px);
   }
 
   .date_info {

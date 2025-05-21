@@ -1,0 +1,78 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip_trigger {
+  display: inline-block;
+}
+
+.tooltip_content {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  padding: 8px 12px;
+  border-radius: var(--radius, 4px);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: var(--shadow);
+  transition: opacity 0.2s, visibility 0.2s;
+  max-width: 250px;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Position variants */
+.tooltip[data-position="top"] .tooltip_content {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0px);
+}
+
+.tooltip[data-position="bottom"] .tooltip_content {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.tooltip[data-position="left"] .tooltip_content {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+}
+
+.tooltip[data-position="right"] .tooltip_content {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(8px);
+}
+
+/* Show on hover AND focus for accessibility */
+.tooltip_trigger:hover + .tooltip_content,
+.tooltip_trigger:focus + .tooltip_content,
+.tooltip_trigger:focus-within + .tooltip_content {
+  visibility: visible;
+  opacity: 1;
+  z-index: 99;
+}
+
+/* Add delay to prevent accidental triggering */
+.tooltip_content {
+  transition-delay: 200ms;
+}
+
+/* Remove delay on exit for better UX */
+.tooltip_trigger:hover + .tooltip_content,
+.tooltip_trigger:focus + .tooltip_content {
+  transition-delay: 0s;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .tooltip_content {
+    border: 1px solid currentColor;
+  }
+}

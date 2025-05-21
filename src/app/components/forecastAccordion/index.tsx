@@ -3,6 +3,7 @@ import { getFormattedDate } from "@/utils/date";
 import Image from "next/image";
 import React from "react";
 import styles from "./accordion.module.css";
+import { Tooltip } from "@/components/ui/tooltip";
 
 type DailyForecastAccordionProps = {
   forecast: ForecastWeatherNearby;
@@ -53,28 +54,34 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
             </div>
           </summary>
           <ul className={styles.accordion_content} id={`details-${idx}`}>
-            {["morning", "afternoon", "evening", "night"].map((part) => {
+            {["morning", "afternoon", "evening", "night"].map((part, index) => {
               const space = item.spaces.find((s) => s.type === part);
+              const isLast = index === item.spaces.length - 1;
               if (!space) return null;
               return (
                 <li
                   key={space.type || part}
                   className={styles.detailed_forecast}
+                  data-position={isLast ? "" : "middle"}
                 >
                   <span className={styles.period_label}>{space.typeLabel}</span>
                   <span className={styles.period_conditions}>
                     {space.weather.icon ? (
-                      <Image
-                        className={styles.period_weather_icon}
-                        src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${space.weather.icon}`}
-                        alt={space.weather.text || "weather icon"}
-                        width={176}
-                        height={150}
-                        loading="lazy"
-                        sizes="(max-width: 600px) 35px, 40px"
-                      />
+                      <Tooltip
+                        tooltipText={space.weather.text || "weather icon"}
+                      >
+                        <Image
+                          className={styles.period_weather_icon}
+                          src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${space.weather.icon}`}
+                          alt={space.weather.text || "weather icon"}
+                          width={176}
+                          height={150}
+                          loading="lazy"
+                          sizes="(max-width: 600px) 35px, 40px"
+                        />
+                      </Tooltip>
                     ) : null}
-                    {space.weather.text}
+                    {/* {space.weather.text} */}
                   </span>
                   <div className={styles.period_temperature}>
                     <span className={styles.max_temp}>
