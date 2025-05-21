@@ -13,9 +13,10 @@
   opacity: 0;
   background-color: var(--background);
   color: var(--foreground);
-  padding: 8px 12px;
-  border-radius: var(--radius, 4px);
+  padding: 6px 12px;
+  border-radius: 4px;
   font-size: 0.875rem;
+  line-height: 1;
   white-space: nowrap;
   z-index: 100;
   box-shadow: var(--shadow);
