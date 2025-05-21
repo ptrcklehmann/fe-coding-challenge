@@ -32,7 +32,7 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
                 {getFormattedDate(item.summary.date).dayOfTheWeek}
               </span>
             </div>
-            {item.summary.weather.icon && (
+            {item.summary.weather.icon ? (
               <Image
                 className={styles.weather_icon}
                 src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${item.summary.weather.icon}`}
@@ -42,7 +42,7 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
                 priority={idx === 0}
                 sizes="(max-width: 600px) 50px, 100px"
               />
-            )}
+            ) : null}
             <div className={styles.temperature}>
               <span className={styles.max_temp}>
                 {item.summary.temperature.max}°
@@ -63,7 +63,7 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
                 >
                   <span className={styles.period_label}>{space.typeLabel}</span>
                   <span className={styles.period_conditions}>
-                    {space.weather.icon && (
+                    {space.weather.icon ? (
                       <Image
                         className={styles.period_weather_icon}
                         src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${space.weather.icon}`}
@@ -73,7 +73,7 @@ const DailyForecastAccordion: React.FC<DailyForecastAccordionProps> = ({
                         loading="lazy"
                         sizes="(max-width: 600px) 35px, 40px"
                       />
-                    )}
+                    ) : null}
                     {space.weather.text}
                   </span>
                   <div className={styles.period_temperature}>

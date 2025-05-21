@@ -21,15 +21,17 @@ export default function ForecastSingle({
         </span>
       </div>
       <div className={styles.weather_icon_container}>
-        <Image
-          className={styles.weather_icon}
-          src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${forecastItem.summary.weather.icon}`}
-          alt={forecastItem.summary.weather.text || "weather icon"}
-          width={88}
-          height={75}
-          priority={true}
-          sizes="(max-width: 600px) 90vw, 40vw"
-        />
+        {forecastItem.summary.weather.icon ? (
+          <Image
+            className={styles.weather_icon}
+            src={`https://cs3.wettercomassets.com/wcomv5/images/icons/weather/${forecastItem.summary.weather.icon}`}
+            alt={forecastItem.summary.weather.text || "weather icon"}
+            width={88}
+            height={75}
+            priority={true}
+            sizes="(max-width: 600px) 90vw, 40vw"
+          />
+        ) : null}
       </div>
       <div className={styles.temperature}>
         <span className={styles.max_temp}>
